@@ -1,6 +1,10 @@
 import { defineConfig } from 'vite'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  // GitHub Pages를 위한 base 경로 설정
+  // 개발 모드: '/', 프로덕션 빌드: '/mart_test/'
+  base: command === 'build' ? '/mart_test/' : '/',
+  
   // 개발 서버 설정
   server: {
     port: 3000,
@@ -32,6 +36,6 @@ export default defineConfig({
   
   // 플러그인 설정 (필요시 추가)
   plugins: []
-})
+}))
 
 
