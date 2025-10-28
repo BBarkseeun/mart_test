@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마트페이지 - 온라인 쇼핑몰</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-shopping-cart"></i>
+                <span>MaMart</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="#products">상품</a></li>
+                    <li><a href="#categories">카테고리</a></li>
+                    <li><a href="#cafe">카페 선주문</a></li>
+                    <li><a href="#about">소개</a></li>
+                    <li><a href="#contact">연락처</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="상품을 검색하세요...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-actions">
+                    <button class="btn-icon"><i class="fas fa-user"></i></button>
+                    <button class="btn-icon"><i class="fas fa-heart"></i></button>
+                    <button class="btn-icon cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 메인 배너 캐러셀 -->
+    <section class="hero">
+        <div class="carousel-container">
+            <div class="carousel-wrapper">
+                <div class="carousel-slide active" data-slide="0">
+                    <div class="hero-content">
+                        <h1>새로운 쇼핑 경험을 시작하세요</h1>
+                        <p>최고의 품질과 합리적인 가격으로 만나는 특별한 상품들</p>
+                        <button class="btn-primary">지금 쇼핑하기</button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="쇼핑">
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" data-slide="1">
+                    <div class="hero-content">
+                        <h1>🍕 새로운 피자 메뉴 출시!</h1>
+                        <p>신선한 재료로 만든 정통 이탈리안 피자</p>
+                        <button class="btn-primary">신메뉴 보기</button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="피자">
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" data-slide="2">
+                    <div class="hero-content">
+                        <h1>⏰ 타임세일 진행중!</h1>
+                        <p>매일 오후 2-4시, 신선한 과일 50% 할인</p>
+                        <button class="btn-primary">세일 상품 보기</button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="과일 세일">
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" data-slide="3">
+                    <div class="hero-content">
+                        <h1>☕ 카페 신메뉴 출시</h1>
+                        <p>시즌 한정 스페셜 커피와 디저트</p>
+                        <button class="btn-primary">카페 메뉴 보기</button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="카페">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 캐러셀 네비게이션 -->
+            <div class="carousel-nav">
+                <button class="nav-btn prev-btn" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn next-btn" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- 캐러셀 인디케이터 -->
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="currentSlide(0)"></span>
+                <span class="indicator" onclick="currentSlide(1)"></span>
+                <span class="indicator" onclick="currentSlide(2)"></span>
+                <span class="indicator" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 카테고리 섹션 -->
+    <section class="categories">
+        <div class="container">
+            <h2>인기 카테고리</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <h3>돼지고기</h3>
+                    <p>신선한 돼지고기</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-hamburger"></i>
+                    <h3>소고기</h3>
+                    <p>프리미엄 소고기</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <h3>닭고기</h3>
+                    <p>신선한 닭고기</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>쌈·야채</h3>
+                    <p>신선한 채소</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-fish"></i>
+                    <h3>수산물</h3>
+                    <p>신선한 해산물</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>과일</h3>
+                    <p>달콤한 과일</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-bread-slice"></i>
+                    <h3>빵·잼</h3>
+                    <p>신선한 베이커리</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-wine-bottle"></i>
+                    <h3>음료·차</h3>
+                    <p>다양한 음료</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 상품 섹션 -->
+    <section class="products">
+        <div class="container">
+            <h2>인기 상품</h2>
+            <div class="product-grid" id="productGrid">
+                <!-- 상품들이 JavaScript로 동적으로 추가됩니다 -->
+            </div>
+            <button class="btn-secondary">더 많은 상품 보기</button>
+        </div>
+    </section>
+
+    <!-- 카페 선주문 섹션 -->
+    <section class="cafe" id="cafe">
+        <div class="container">
+            <h2>카페 선주문</h2>
+            <p class="cafe-subtitle">신선한 원두로 만든 프리미엄 커피와 디저트를 미리 주문하세요</p>
+            <div class="cafe-menu">
+                <div class="menu-category">
+                    <h3><i class="fas fa-coffee"></i> 커피 메뉴</h3>
+                    <div class="menu-grid" id="coffeeMenu">
+                        <!-- 커피 메뉴가 JavaScript로 동적으로 추가됩니다 -->
+                    </div>
+                </div>
+                <div class="menu-category">
+                    <h3><i class="fas fa-cookie-bite"></i> 디저트</h3>
+                    <div class="menu-grid" id="dessertMenu">
+                        <!-- 디저트 메뉴가 JavaScript로 동적으로 추가됩니다 -->
+                    </div>
+                </div>
+            </div>
+            <div class="cafe-info">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>픽업 시간</h4>
+                    <p>주문 후 15-20분</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>픽업 장소</h4>
+                    <p>실로암펜션 1층 마트</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>알림 서비스</h4>
+                    <p>준비 완료 시 알림</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 특별 혜택 섹션 -->
+    <section class="offers">
+        <div class="container">
+            <div class="offer-card">
+                <div class="offer-content">
+                    <h3>무료 배송</h3>
+                    <p>5만원 이상 구매시 무료배송</p>
+                </div>
+                <i class="fas fa-truck"></i>
+            </div>
+            <div class="offer-card">
+                <div class="offer-content">
+                    <h3>24시간 고객지원</h3>
+                    <p>언제든지 도움을 받으세요</p>
+                </div>
+                <i class="fas fa-headset"></i>
+            </div>
+            <div class="offer-card">
+                <div class="offer-content">
+                    <h3>안전한 결제</h3>
+                    <p>보안이 강화된 결제 시스템</p>
+                </div>
+                <i class="fas fa-shield-alt"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>마마트</h3>
+                    <p>최고의 쇼핑 경험을 제공하는 온라인 마켓플레이스</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>고객지원</h4>
+                    <ul>
+                        <li><a href="#">자주 묻는 질문</a></li>
+                        <li><a href="#">배송 안내</a></li>
+                        <li><a href="#">반품/교환</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>회사정보</h4>
+                    <ul>
+                        <li><a href="#">회사소개</a></li>
+                        <li><a href="#">채용정보</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>뉴스레터</h4>
+                    <p>최신 상품 정보와 특별 할인 소식을 받아보세요</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="이메일 주소">
+                        <button>구독</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 마마트. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 상품 상세 모달 -->
+    <div class="product-modal" id="productModal">
+        <div class="product-modal-content">
+            <div class="product-modal-header">
+                <h2 id="productModalTitle">상품 상세</h2>
+                <button class="close-btn" onclick="closeProductModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="product-modal-body">
+                <div class="product-detail-image">
+                    <img id="productModalImage" src="" alt="상품 이미지">
+                </div>
+                <div class="product-detail-info">
+                    <h3 id="productModalName">상품명</h3>
+                    <div class="product-detail-price" id="productModalPrice">₩0</div>
+                    <div class="product-detail-rating" id="productModalRating">
+                        <span class="stars"></span>
+                        <span class="rating-text"></span>
+                    </div>
+                    <div class="product-detail-description" id="productModalDescription">
+                        상품 설명이 여기에 표시됩니다.
+                    </div>
+                    <div class="product-detail-features">
+                        <h4>상품 특징</h4>
+                        <ul id="productModalFeatures">
+                            <li>신선한 원료 사용</li>
+                            <li>안전한 포장</li>
+                            <li>빠른 배송</li>
+                        </ul>
+                    </div>
+                    <div class="product-detail-actions">
+                        <button class="wishlist-btn-modal" id="productModalWishlist" onclick="toggleWishlistFromModal()">
+                            <i class="fas fa-heart"></i>
+                            <span>찜하기</span>
+                        </button>
+                        <button class="btn-primary" onclick="addToCartFromModal()">
+                            <i class="fas fa-shopping-cart"></i>
+                            장바구니에 추가
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 장바구니 모달 -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2><i class="fas fa-shopping-cart"></i> 장바구니</h2>
+                <button class="close-btn" onclick="closeCartModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-modal-body">
+                <div class="cart-items" id="cartItems">
+                    <!-- 장바구니 아이템들이 JavaScript로 동적으로 추가됩니다 -->
+                </div>
+                <div class="cart-empty" id="cartEmpty">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>장바구니가 비어있습니다</p>
+                    <button class="btn-primary" onclick="closeCartModal()">쇼핑 계속하기</button>
+                </div>
+            </div>
+            <div class="cart-modal-footer">
+                <div class="cart-total">
+                    <div class="total-info">
+                        <span>총 상품 수량: <strong id="totalQuantity">0</strong>개</span>
+                        <span>총 결제 금액: <strong id="totalPrice">₩0</strong></span>
+                    </div>
+                    <div class="cart-actions">
+                        <button class="btn-secondary" onclick="clearCart()">장바구니 비우기</button>
+                        <button class="btn-primary" onclick="proceedToCheckout()">선주문하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
